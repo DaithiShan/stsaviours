@@ -26,7 +26,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Shop
+                    Subs
                 </a>
                     <div class="dropdown-menu bg-dark" aria-labelledby="shopDropdown">
                                 <a class="dropdown-item text-uppercase" href="#">Shop</a>
@@ -50,20 +50,20 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-uppercase" href="#">Order History</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-uppercase" href="#">Logout</a>
+                            <a class="dropdown-item text-uppercase" href="{% url 'logout' %}">Logout</a>
                         </div>
                     </li>
-                {% else %}
+                    {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="#">Register</a>
+                        <a class="nav-link text-uppercase" href="{% url 'register' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="#">Login</a>
+                        <a class="nav-link text-uppercase" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif  %}
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item mb-1">
                     <a class="nav-link" href="#">
                         <i class="fas fa-search" title="Search"></i>
                     </a>
