@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'products.apps.ProductsConfig',
     'store.apps.StoreConfig',
     'django.contrib.admin',
@@ -77,6 +78,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'stsaviours.wsgi.application'
+
+# Store session messages
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# Custom User Model
+AUTH_USER_MODEL = "accounts.Account"
 
 
 # CSRF TRUSTED ORIGINS SET TO LOCAL URL
