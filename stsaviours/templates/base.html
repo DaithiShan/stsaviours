@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="St Saviours Olympic Boxing Academy">
+        <meta name="description" content="St Saviours Olympic Boxing Academy is home to the Irish boxing champions of tomorrow. Join today, and pay your subs!">
+    {% endblock %}
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'favicon/favicon.png' %}">
+
+
+    <!-- STYLESHEETS -->
+    {% block corecss %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.min.css' %}">
+    {% endblock corecss %}
+    
+    {% block extracss %}
+    {% endblock extracss %}
+
+    <!-- SCRIPTS -->
+    {% block corejs %}        
+        <!-- Stripe -->
+        <script src="https://js.stripe.com/v3/"></script>
+    {% endblock %}
+    
+    {% block extra_js %}
+    {% endblock %}
+
+    <!-- PAGE TITLE -->
+        <title>St Saviours OBA - {% block extra_title %}{% endblock %}</title>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+{% if navbar != False %}
+    {% include 'includes/navbar.html' %}
+{% endif %}
+
+    {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 40 %}
+                            {% include 'includes/toasts/toast_error.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/toast_warning.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/toast_success.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/toast_info.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    
+    <!-- PAGE CONTENT -->
+    <main>
+        {% block content %}
+            {% block breadcrumb_section %}
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="page breadcrumbs">
+                            {% block breadcrumb_content %}
+                            {% endblock %}
+                        </nav>
+                    </div>
+                </div>
+            {% endblock %}
+        {% endblock content %}
+    </main>
+
+    <!-- FOOTER -->
+{% if footer != False %}
+    {% include 'includes/footer.html' %}
+{% endif %}
+    
+    {% block postloadjs %}
+    {% endblock %}
+
+</body>
+</html> 
