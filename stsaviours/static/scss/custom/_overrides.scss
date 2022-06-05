@@ -1,0 +1,59 @@
+// WHITE AND GREY COLORS
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// COLOR OVERRIDES
+$yellow:  #ffee32;
+$orange:  #fdc500;
+$cyan:  #c86bfa;
+$purple:  #5c0099;
+$black:    #03071e;
+$dark: #03071e;
+
+// THEME OVERRIDES
+$primary: $yellow;
+$secondary: $orange;
+$danger: $cyan;
+$text-muted: $gray-500;
+
+// BODY OVERRIDES
+$body-bg: $gray-900;
+$body-color: $gray-200 ;
+
+// NAVBAR OVERRIDES
+$navbar-dark-color:                 $yellow;
+$navbar-dark-hover-color:           rgba($orange, .80);
+$navbar-dark-active-color:          $orange ;
+$navbar-dark-disabled-color:        rgba($white, .25) ;
+$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") ;
+$navbar-dark-toggler-border-color:  rgba($white, .1);
+
+// LINK OVERRIDES
+$link-color: $black;
+$link-decoration:                         none;
+
+// TOAST OVERRIDES
+$toast-max-width:                   350px;
+$toast-padding-x:                   .75rem;
+$toast-padding-y:                   .5rem;
+$toast-font-size:                   .9rem;
+$toast-color:                       $orange;
+$toast-background-color:            $black;
+$toast-border-width:                1px;
+$toast-border-color:                $yellow;
+
+$toast-header-color:                $yellow;
+$toast-header-background-color:     $black;
+
+// INPUT OVERRIDES
+$input-color: $black;
+
+@import "../../bootstrap-src/bootstrap";

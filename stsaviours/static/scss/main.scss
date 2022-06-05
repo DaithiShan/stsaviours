@@ -1,0 +1,608 @@
+@import './custom/overrides';
+
+// GOOGLE FONT IMPORT
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Playball&display=swap');
+
+// BODY EXTRA STYLING
+body {
+    font-family: 'Oswald', sans-serif;
+
+    /* for footer placement
+    ref: https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14 */
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.section-divider {
+    margin-bottom: 10px;
+    border: 0;
+    width: 100%; 
+    height: 1px;
+    background-color: $orange;
+}
+
+// NAVBAR EXTRA STYLING
+.nav-link {
+    font-family: 'Playball', cursive;
+    font-size: 2rem;
+    margin-right: 10px;
+    padding-bottom: 10px;
+
+    i {
+        color: $yellow;
+    }
+
+    &.active{
+        i {
+            color: $orange;
+        }
+
+        span {
+            color: $black;
+        }
+    }
+}
+
+#nav-logo {
+    img {
+        width: auto;
+        height: 50px;
+    }
+}
+
+.dropdown-menu {
+    .dropdown-item {
+
+        color: $primary;
+
+        &:hover {
+            background-color: $orange;
+            color: $black;
+        }
+
+        &:focus {
+            background-color: $cyan;
+            color: $black;
+        }
+    }
+}
+
+// FOOTER EXTRA STYLING
+
+footer {
+    background-color: $dark;
+    margin-top: auto;
+
+    .footer-title {
+        font-family: 'Playball', cursive;
+        color: $yellow;
+        font-size: 1.6rem;
+        padding-top: 10px;
+    }
+
+    .footer-text {
+        font-size: 1.1rem;
+
+        a {
+            transition: all 0.5s ease 0s;
+            text-decoration: none;
+            color: $gray-200;
+        }
+
+        a:hover {
+            color: rgba($orange, .80);
+        }
+
+        a:focus {
+            color: $orange;
+        }
+    }
+}
+
+//LANDING PAGE STYLING
+#home-hero {
+    background-image: url('/static/img/hero-image.webp');
+    height: 92vh;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0 5%;
+
+    a {
+        display: block;
+        width:fit-content;
+    }
+}
+
+.home-content {
+    font-size: 1.4rem;
+
+    .home-link {
+        padding: 25px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .btn-primary {
+        display: block;
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+// FORMS EXTRA STYLING
+.form-wrapper {
+    max-width: 60rem;
+    margin: auto;
+
+    h2 {
+        font-family: "Playball", cursive;
+        color: $yellow;
+        font-size: 2rem;
+    }
+
+    label {
+        letter-spacing: 1px;
+        font-size: 1.1rem;
+    }
+
+    input {
+        color: $black;
+        font-size: 1rem;
+
+        &:active, &:focus {
+            border-color: $orange;
+            color: $black;
+        }
+
+        &:focus:invalid {
+            border-color: $cyan;
+        }
+
+        &:focus:valid {
+            border-color: $orange;
+        }
+    }
+
+    select {
+        color: $black;
+        width: 100%;
+    }
+
+    .form-check {
+        padding-left: 3em;
+
+        .form-check-input {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+// TOASTS EXTRA STYLING
+.message-container {
+    position: fixed;
+    width: 300px;
+    top: 75px;
+    right: 0;
+    z-index: 2000;
+
+    .close {
+        font-family: sans-serif;
+        background-color: $orange;
+        color: $black;
+    }
+}
+.custom-toast {
+    overflow: visible;
+}
+.toast-capper {
+    background-color: $yellow;
+    height: 2px;
+}
+.bag-snippet {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.toast-msg {
+    padding-bottom: 5px;
+}
+.toast-msg p {
+    margin-bottom: 0;
+}
+.toast-count {
+    margin-bottom: .2rem;
+    padding: 10px 5px;
+    font-size: .8rem;
+}
+.toast-count span{
+    font-size: 1.2rem;
+}
+.toast-highlighted {
+    background-color: $yellow;
+    color: $black;
+    text-align: center;
+    padding: 10px;
+}
+.toast-btn {
+    background-color: $orange;
+    color: $black;
+
+    &:hover,
+    &:focus {
+        color: $orange;
+        background-color: $black;
+    }
+}
+
+// Product Cards Extra Styling
+
+.product-card {
+    max-width: 91%;
+    margin: auto;
+    background-color: $white;
+    padding-bottom: 2rem;
+}
+
+// PRODUCT PAGE EXTRA STYLING
+
+.detail-sec {
+    padding: 15px 0;
+}
+.detail-text {
+    margin: 0 auto;
+    padding: 30px 20px 10px 20px;
+    font-size: 1.1rem;
+}
+.detail-price {
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.product-list {
+    width: fit-content;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
+    appearance: none;
+}
+
+.decrement-qty,
+.increment-qty {
+    color: $black;
+    background-color: $gray-400;
+}
+
+// STAR RATING STYLING
+
+// Source: https://gist.github.com/NullDev/464b08135138f1c1a135053a898b1a79
+.star-rating {
+    display: inline-block;
+    unicode-bidi: bidi-override;
+    color: $secondary;
+    font-size: 2.5rem;
+    width: auto;
+    margin: 0;
+    position: relative;
+    padding: 0;
+
+    &--small {
+        font-size: 2.5rem;
+    }
+
+    &__upper {
+        color: $yellow;
+        padding: 0;
+        position: absolute;
+        z-index: 5;
+        display: flex;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    &__lower {
+        padding: 0;
+        display: flex;
+        z-index: 0;
+    }
+}
+
+// source: https://codepen.io/andreacrawford/pen/NvqJXW
+
+.star-rate {
+
+    .rating-group {
+        display: inline-flex;
+        display: flex;
+    }
+
+    /* make hover effect work properly in IE */
+    .rating-icon {
+        pointer-events: none;
+    }
+
+    /* hide radio inputs */
+    .rating-input {
+        display: none;
+    }
+
+    /* hide 'none' input from screenreaders */
+    .rating-input-none {
+        display: none
+    }
+
+    /* set icon padding and size */
+    .rating-label {
+        cursor: pointer;
+        padding: 0 0.1em;
+        font-size: 2.5rem;
+    }
+
+    /* set default star color */
+    
+    .rating-icon-star {
+        color: $yellow;
+    }
+
+    /* if any input is checked, make its following siblings grey */
+    .rating-input:checked ~ .rating-label .rating-icon-star {
+        color: $gray-200;
+    }
+
+    /* make all stars yellow on rating group hover */
+    .rating-group:hover .rating-label .rating-icon-star {
+        color: $orange;
+    }
+
+    /* make hovered input's following siblings grey on hover */
+    .rating-input:hover ~ .rating-label .rating-icon-star {
+        color: $gray-200;
+    }
+}
+
+// SEARCH BAR EXTRA STYLING
+.input-group {
+    .btn {
+        &:hover,
+        &:focus {
+            color: $black;
+            background-color: $white;
+        }
+    }
+}
+
+
+// BAG EXTRA STYLING
+.bag-details {
+    font-size: 1.3rem;
+}
+
+
+// ACCOUNT PAGE STYLING
+
+.profile-btns {
+    display: flex;
+    justify-content: center;
+    margin: 1.5% auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 2px;
+    max-width: 100%;
+}
+
+.account{
+
+    th {
+        padding-left: 0;
+    }
+
+    td {
+        padding-left: 0;
+    }
+
+    .details-link {
+        width: fit-content;
+        height: fit-content;
+        margin-top: 1%;
+    }
+
+}
+
+// ChECKOUT PAGES STYLING
+
+.progress-container {
+    margin-bottom: 1rem;
+
+    .progress-steps {
+        margin-top: -3rem;
+    }
+
+    .progress-step {
+        text-align: center;
+        display: inline-block;
+        color: $yellow;
+    }
+
+    .progress-circle {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        border: 1px solid $black;
+        background-color: $yellow;
+        color: $gray-900;
+        margin: 0 auto;
+
+        &.active-circle {
+            background-color: $orange;
+        }
+    }
+}
+
+/* --- Checkout Complete Page --- */
+
+.confirm-row {
+    padding-bottom: 1rem;
+
+    .confirm-text {
+        padding: .5rem .5rem;
+    }
+
+    .confirm-text h5 {
+        font-family: var(--title-font);
+        font-size: 1.6rem;
+    }
+
+    .confirm-table table {
+        width: 100%;
+    }
+
+    .confirm-table table td {
+        border-bottom: 1px solid $yellow;
+        padding: .5rem;
+    }
+
+    .confirm-link {
+        transition: all 0.5s ease 0s;
+    }
+
+    .confirm-link:hover,
+    .confirm-link:focus {
+        color: $orange;
+    }
+}
+
+
+
+// ABOUT PAGES STYLING
+
+.about-text {
+    font-size: .9rem;
+    margin: auto;
+}
+.about-text {
+    h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    }
+
+    .pages-link {
+        color: $gray-200
+    }
+}
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.about-content iframe {
+    border: none;
+    width: inherit;
+    height: inherit;
+}
+.map-wrapper {
+    margin: auto;
+    position: relative;
+    text-align: right;
+    height: 450px;
+    width: 300px;
+}
+.gmap_canvas {
+    margin: auto !important;
+    overflow: hidden;
+    background: none!important;
+    height: 100%;
+    width: 100%;
+}
+
+.col-title {
+    background-color: $yellow;
+    border-bottom: 1px solid $black;
+}
+
+.question-col {
+    background-color: $gray-900;
+}
+
+
+// MEDIA QUERIES
+@media (min-width: 700px) and (max-width: 991px) {
+
+    .about-content {
+        margin: auto;
+        padding: 10px;
+    }
+    .about-text {
+        font-size: .9rem;
+        padding-bottom: 5px;
+    }
+    .about-text table {
+        margin-bottom: 20px;
+    }
+    .about-text h4 {
+        font-size: 1.6rem;
+    }
+
+    .map-wrapper {
+        height: 300px;
+        width: 350px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    .about-content {
+        margin: auto;
+        padding: 10px;
+    }
+    .about-text {
+        font-size: .9rem;
+        padding-bottom: 5px;
+    }
+    .about-text table {
+        margin-bottom: 20px;
+    }
+    .about-text h4 {
+        font-size: 1.6rem;
+    }
+
+    .map-wrapper{
+        height: 300px;
+        width: 350px;
+    }
+}
+
+@media (min-width: 1025px) {
+
+    /* about Page */
+    .about-content {
+        margin: auto;
+        padding: 10px;
+    }
+    .about-text {
+        font-size: 1.3rem;
+        padding-bottom: 5px;
+    }
+    .about-text table {
+        margin-bottom: 20px;
+    }
+    .about-text h4 {
+        font-size: 1.6rem;
+    }
+    .map-wrapper {
+        height: 450px;
+        width: 600px;
+    }
+
+    .map-wrapper {
+        height: 450px;
+        width: 600px;
+    }
+}
