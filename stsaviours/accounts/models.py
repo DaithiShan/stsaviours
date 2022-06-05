@@ -8,19 +8,13 @@ class MyAccountManager(BaseUserManager):
     Account manager for custom user model
     """
     def create_user(
-        self, email, first_name, last_name, password=None
+        self, email, password=None
     ):
         if not email:
             raise ValueError("Users must enter an email address")
-        if not first_name:
-            raise ValueError("Users must enter a first name")
-        if not last_name:
-            raise ValueError("Users must enter a last name")
 
         user = self.model(
             email=self.normalize_email(email),
-            first_name=first_name,
-            last_name=last_name,
         )
 
         user.set_password(password)
@@ -28,13 +22,11 @@ class MyAccountManager(BaseUserManager):
         return user
 
     def create_superuser(
-        self, email, first_name, last_name, password
+        self, email, password,
     ):
         user = self.create_user(
             email=self.normalize_email(email),
             password=password,
-            first_name=first_name,
-            last_name=last_name,
         )
         user.is_admin = True
         user.is_staff = True
@@ -50,12 +42,6 @@ class Account(AbstractBaseUser):
     email = models.EmailField(
         verbose_name="email", max_length=60, unique=True
     )
-    first_name = models.CharField(
-        verbose_name="first name", max_length=30, unique=False
-    )
-    last_name = models.CharField(
-        verbose_name="last name", max_length=30, unique=False
-    )
     date_joined = models.DateTimeField(
         verbose_name="date joined", auto_now_add=True
     )
@@ -66,13 +52,8 @@ class Account(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name",]
 
     objects = MyAccountManager()
-
-    def clean(self):
-        self.first_name = self.first_name.title()
-        self.last_name = self.last_name.title()
 
     def __str__(self):
         return self.email

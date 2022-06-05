@@ -5,8 +5,6 @@ class AccountAdmin(admin.ModelAdmin):
 
     list_display = (
         "email",
-        "first_name",
-        "last_name",
         "date_joined",
         "last_login",
         "is_admin",
@@ -14,8 +12,6 @@ class AccountAdmin(admin.ModelAdmin):
     )
     search_fields = (
         "email",
-        "first_name",
-        "last_name",
     )
     readonly_fields = ("date_joined", "last_login")
 
