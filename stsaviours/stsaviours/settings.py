@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     # 3rd party
     'widget_tweaks',
@@ -92,7 +93,8 @@ AUTH_USER_MODEL = "accounts.Account"
 
 # CSRF TRUSTED ORIGINS SET TO LOCAL URL
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-daithishan-stsaviours-ik33k1utp1f.ws-eu46.gitpod.io'
+    'https://8000-daithishan-stsaviours-ik33k1utp1f.ws-eu46.gitpod.io',
+    'https://8000-daithishan-stsaviours-ik33k1utp1f.ws-eu47.gitpod.io'
 ]
 
 

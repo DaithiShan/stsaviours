@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block extra_title %}{{ product.title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <!-- Page Breadcrumbs -->
+        {% block breadcrumb_content %}
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'store-home' %}" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'shop' 'membership' %}" class="text-primary">All Membership Options</a></li>
+                <li class="breadcrumb-item active text-secondary" aria-current="page">{{ product.title }}</li>
+            </ol>
+        {% endblock %}
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-secondary">{{ product.title }}</h2>
+                <hr class="section-divider">
+            </div>
+            
+        </div>
+
+        <!-- Page Content -->
+        <div class="row mb-5">
+
+            <!-- Product Image -->
+            <div class="col-12 col-md-6 col-lg-6">   
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="w-100 h-100 img-fluid">
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-12 col-md-6 col-lg-6 p-sm-4 p-md-3 p-lg-3 detail-text">
+                <div class="row">
+
+                    <!-- Product Price -->
+                    <div class="col-6 text-right detail-price">
+                        <h3 class="fs-4">Price:</h3>
+                        <h3 class="fs-4">€{{ product.price }}</h3>
+                    </div>
+                </div>
+
+                <!-- Product Description -->
+                <div class="row">
+                    <div class="col-12">
+                        <p class="fs-4 mt-2 mb-1">Description:</p>
+                        <p class="fs-5">"{{ product.description }}"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script>
+    </script>
+{% endblock %}

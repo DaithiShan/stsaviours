@@ -5,74 +5,11 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
-# ------ Product Categories ------
-
-
-class Category(models.Model):
-    """
-    Defines category of selected product
-     (for filtering purposes)
-    """
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255)
-    ordering = models.IntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = 'Categories'
-        ordering = ("ordering", "title")
-
-    def __str__(self):
-        return self.title
-
-    def save(self, *args, **kwargs):
-        """
-        Overwrite default save and create product slug
-        """
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
-
-
-class Subcategory(models.Model):
-    """
-    Defines subcategory of selected product
-     (for filtering purposes)
-    """
-    parent = models.ForeignKey(Category,
-                               related_name='subcategories',
-                               blank=True,
-                               null=True,
-                               on_delete=models.SET_NULL)
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, blank=True, null=True)
-    ordering = models.IntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = "Subcategories"
-        ordering = ("parent", "ordering", "title")
-
-    def __str__(self):
-        return self.title
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
-
-
 # ------ Products ------
 
 
 class Product(models.Model):
     """ Defines all products """
-    category = models.ForeignKey(Category,
-                                 blank=True,
-                                 null=True,
-                                 related_name='products',
-                                 on_delete=models.SET_NULL)
-    subcategory = models.ForeignKey(Subcategory,
-                                    blank=True,
-                                    null=True,
-                                    related_name='subcategory',
-                                    on_delete=models.SET_NULL)
     title = models.CharField(max_length=255)
     ordering = models.IntegerField(default=0)
     slug = models.SlugField(max_length=255)
@@ -128,7 +65,7 @@ class Product(models.Model):
         Creates a redirect url for product
         based on whether products has a set type or not
         """
-        url = f"/shop/{self.category.slug}/{self.subcategory.slug}/"
+        url = f"/shop/"
         return (
             url + f"{self.slug}"
         )

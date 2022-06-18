@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}Search{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mt-3">
+                    <a class="text-secondary" href="{% url 'search' %}">
+                        Search
+                    </a>
+                </h3>
+                <hr class="section-divider">
+            </div>
+
+            <!-- Search Box -->
+            <div class="col-12">
+                <form>
+                    <div class="input-group mb-4 search-bar">
+                        <input type="search" name="q" placeholder="Search Products" aria-describedby="searchBtn" class="form-control">
+                        <div class="input-group-append search-btn">
+                          <button id="searchBtn" type="submit" class="form-control btn">
+                              <span>
+                                  Search <i class="fa fa-search"></i>
+                              </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        <!-- Page Content -->
+        <div class="row products-sec">
+            {% if search_term %}
+
+                <!-- If NO results -->
+                {% if products|length < 1 %}
+                    <div class="col-12 search-text">
+                        <h3>
+                            We're sorry! <i class="far fa-frown"></i>
+                        </h3>
+                        <p>
+                            We were not able to find a match. 
+                            <br class="d-block d-md-none"> 
+                            Search again, or select a category:
+                        </p>
+                    </div>
+
+                <!-- If results -->
+                {% else %}
+                    <div class="col-12">
+                        <p>
+                            {{ products|length }} {% if products|length > 1 %}products{%else%}product{%endif%} {% if search_term %} found for: "{{ search_term }}"{% endif %}
+                        </p>
+                    </div>
+
+                    <!-- Product Card -->
+                    <!-- Product Card -->
+                        {% for product in products %}
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 px-md-1 product">
+                            <div class="row product-card">
+                                <div class="col-12 p-0">
+                                        <a class="product-img" href="{% url 'product_page' product.slug %}">
+                                            <img class="mx-auto d-block" src="{{ product.thumbnail.url }}" alt="{{ product.title }}">
+                                        </a>
+                                </div>
+                                <div class="col-12">
+                                    <a href="{% url 'product_page' product.slug %}">
+                                        <h3 class="text-black ms-3">{{ product.title }}</h3>
+                                    </a>
+                                </div>
+                                <div class="col-12 font-weight-bolder ms-3 text-dark lead">
+                                    €{{ product.price }}
+                                </div>
+                                <div class="col-12 font-weight-bolder ms-3 text-dark lead">
+                                    RATING
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+
+            <!-- Search Category Buttons -->
+            {% if not search_term or products|length < 1 %}
+                <div class="home-content col-12">
+                    <div class="container-fluid">
+                        <div class="row text-center d-flex justify-content-center">
+                            <div class="col-12 col-md-6 col-lg-3 home-link d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="#">
+                                            <img src="{% static 'img/about-us.webp' %}" alt="Image of St Saviours boxing coach, John 'Young' McCormack">
+                                        </a>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <a class="btn-primary btn-lg mt-2 mb-2" href="{% url 'view_about' %}">About Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 home-link d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a class="" href="{% url 'shop' 'apparel' %}">
+                                            <img src="{% static 'img/hoodie.webp' %}" alt="Image of St Saviours OBA Hoodie">
+                                        </a>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <a class="btn-primary btn-lg mt-2 mb-2" href="{% url 'shop' 'apparel' %}">Shop Club Apparel</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 home-link d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="{% url 'shop' 'boxing-gear' %}">
+                                            <img src="{% static 'img/gloves.webp' %}" alt="Image of boxing gloves">
+                                        </a>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <a class="btn-primary btn-lg mt-2 mb-2" href="{% url 'shop' 'boxing-gear' %}">Shop Boxing Gear</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 home-link d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="{% url 'shop' 'membership' %}">
+                                            <img src="{% static 'img/member.webp' %}" alt="Image of boxer training in St Saviours OBA">
+                                        </a>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <a class="btn-primary btn-lg mt-2 mb-2" href="{% url 'shop' 'membership' %}">Membership</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -26,11 +26,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Subs
+                    Pay Subs
                 </a>
-                    <div class="dropdown-menu bg-dark" aria-labelledby="shopDropdown">
-                                <a class="dropdown-item text-uppercase" href="#">Shop</a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="shopDropdown">
+                        {% for product in products %}
+                                <a class="dropdown-item text-uppercase" href="{% url 'shop' product.slug %}">{{ product.title }}</a>
                                 <div class="dropdown-divider"></div>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item dropdown">

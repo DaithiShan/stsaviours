@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+
+{% block extra_title %}Shop{% endblock extra_title %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Page Breadcrumbs -->
+    {% block breadcrumb_content %}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'store-home' %}" class="text-primary">Home</a></li>
+            {% if product %}
+                <li class="breadcrumb-item active text-secondary" aria-current="page">{{ product.title }}</li>
+            {% endif %}
+        </ol>
+    {% endblock %}
+    
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-12">
+            {% if product %}
+                <h3 class="text-primary">{{ product.title }}</h3>
+            {% endif %}
+            <hr class="">
+        </div>
+        <div class="col-12 text-center dropdown show mb-4">
+                <button type="button" id="sortDropdown" class="dropdown-toggle btn btn-secondary" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Products
+                </button>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="sortDropdown">
+                    <li><a href="#" class="dropdown-item">Lowest Price</a></li>
+                </ul>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="row">
+
+        <!-- Product Card -->
+        {% for product in products %}
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 px-md-1 product">
+                <div class="row product-card">
+                    <div class="col-12 p-0">
+                            <a class="product-img" href="{% url 'product_page' product.slug %}">
+                                <img class="mx-auto d-block" src="{{ product.thumbnail.url }}" alt="{{ product.title }}">
+                            </a>
+                    </div>
+                    <div class="col-12">
+                        <a href="{% url 'product_page' product.slug %}">
+                            <h3 class="text-black ms-3">{{ product.title }}</h3>
+                        </a>
+                    </div>
+                    <div class="col-12 font-weight-bolder ms-3 text-dark lead">
+                        €{{ product.price }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}
